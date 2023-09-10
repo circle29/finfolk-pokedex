@@ -134,12 +134,12 @@ export const Pokemon = () => {
         pokemon &&
         likedPokemon.find((item) => item.data.pokemonId === pokemon.key)
       ) {
-        setIsCurrentPokemonLiked(true); // Set to true if the Pokemon is liked
+        setIsCurrentPokemonLiked(true);
       } else {
-        setIsCurrentPokemonLiked(false); // Set to false if the Pokemon is not liked
+        setIsCurrentPokemonLiked(false);
       }
     } else {
-      setIsCurrentPokemonLiked(null); // Set to null if the user is not logged in
+      setIsCurrentPokemonLiked(null);
     }
   };
 
@@ -154,7 +154,7 @@ export const Pokemon = () => {
   };
 
   const handleListLikedPokemon = () => {
-    setShowLikedPokemon(!showLikedPokemon); // Step 2: Toggle the state
+    setShowLikedPokemon(!showLikedPokemon);
   };
 
   return (
