@@ -230,7 +230,7 @@ export const Pokemon = () => {
             <Image src={pokeball} alt="pokeball" width={144} height={144} />
           </div>
         </div>
-        <div className="pokedex-screen w-3/4 h-96 sm: w-50">
+        <div className="pokedex-screen w-3/4 h-96 sm: w-50 items-center justify-center">
           {selectedPokemon && (
             <>
               <img
@@ -260,9 +260,11 @@ export const Pokemon = () => {
           </div>
           <div className="pokedex-screen">
             {selectedPokemon && (
-              <div className="grid grid-cols-2">
+              <div className="grid grid-cols-2 justify-center">
                 <div>
-                  <h2 className=" font-bold text-lg sm:text-sm pb-1">Status</h2>
+                  <h2 className="font-bold xl: text-lg sm:text-sm pb-1">
+                    Status
+                  </h2>
                   <h2 className="font-bold text-sm">
                     sAtk{selectedPokemon.baseStats.specialattack}
                   </h2>

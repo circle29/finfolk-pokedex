@@ -20,7 +20,7 @@
 }
 
 .pokedex-screen {
-  @apply bg-white rounded-lg justify-center flex flex-col items-center shadow-2xl border-solid border-black border-8 xs:border-2 xs:p-1;
+  @apply bg-white rounded-lg  flex flex-col  shadow-2xl border-solid border-black border-8 xs:border-2 xs:p-1;
 }
 
 .pokedex-button {
