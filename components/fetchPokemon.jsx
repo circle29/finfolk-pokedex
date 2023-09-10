@@ -61,6 +61,7 @@ export const Pokemon = () => {
   }, [user]);
 
   const getLikedPokemon = async () => {
+    console.log("Skadidap");
     const queryLikedPokemon = query(
       collection(db, "pokemon_data"),
       where("userId", "==", user.uid)
@@ -111,10 +112,7 @@ export const Pokemon = () => {
     const docRef = await addDoc(collection(db, "pokemon_data"), data);
 
     if (docRef) {
-      likedPokemon.push({
-        docRef: docRef,
-        data: data,
-      });
+      getLikedPokemon();
     }
   };
 
@@ -122,19 +120,11 @@ export const Pokemon = () => {
     const deletedPokemon = likedPokemon.find(
       (item) => item.data.pokemonId === selectedPokemon.key
     );
-
     if (deletedPokemon) {
       const deleteResult = await deleteDoc(
         doc(db, "pokemon_data", deletedPokemon.docRef)
       );
-      if (deleteResult) {
-        // Remove the deleted Pokemon from the likedPokemon state
-        setLikedPokemon((prevLikedPokemon) =>
-          prevLikedPokemon.filter(
-            (item) => item.docRef !== deletedPokemon.docRef
-          )
-        );
-      }
+      getLikedPokemon();
     }
   };
 
@@ -172,12 +162,12 @@ export const Pokemon = () => {
       <div className="flex h-screen flex-col sm:order-2 xs:order-2">
         <div>
           <div className=" text-center">
-            <div className="customButton text-center">
-              <button onClick={handleListLikedPokemon}>
-                List Pokemon you like
+            <div className="text-center">
+              <button className="customButton" onClick={handleListLikedPokemon}>
+                Pokemon You Like
               </button>
             </div>
-            <div className="grid xl:grid-cols-3 gap-0 overflow-auto inset-0 pt-5 md:grid-cols-2">
+            <div>
               {showLikedPokemon && (
                 <div className="grid xl:grid-cols-3 gap-0 overflow-auto inset-0 pt-5 md:grid-cols-2">
                   {likedPokemon.map((likedData) => {
@@ -223,9 +213,7 @@ export const Pokemon = () => {
               <img
                 src={pokemon.sprite}
                 alt={pokemon.species}
-                width={128}
-                max-width={128}
-                height={128}
+                className="object-contain w-48 aspect-square"
               />
               <h2>{pokemon.species}</h2>
             </button>

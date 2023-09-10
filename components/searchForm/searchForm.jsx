@@ -21,7 +21,7 @@ export const SearchForm = ({ onSearch }) => {
       </label>
       <div class="relative">
         <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-          <MagnifyingGlassIcon className=" w-5" />
+          <MagnifyingGlassIcon className="w-5" />
         </div>
         <input
           type="text"
